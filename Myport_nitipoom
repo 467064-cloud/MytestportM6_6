@@ -1,1 +1,360 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Admission 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables สำหรับจัดการธีมสี --- */
+        :root[data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --accent-color: #4f46e5; /* สีน้ำเงินอมม่วงแนว Tech */
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --border-color: #e5e7eb;
+        }
 
+        :root[data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8; /* สีฟ้าสว่างเวลากลางคืน */
+            --nav-bg: rgba(15, 23, 42, 0.8);
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 10%;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        /* --- Layout ส่วนต่างๆ --- */
+        section {
+            padding: 6rem 10% 4rem 10%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        #home {
+            text-align: center;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+        }
+
+        .btn-cta {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-content { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.2rem; }
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section (Grid) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .project-tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.8rem;
+            background-color: var(--bg-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            min-height: 50vh;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-links a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PORTFOLIO.</div>
+        <ul class="nav-links">
+            <li><a href="#home">หน้าแรก</a></li>
+            <li><a href="#about">เกี่ยวกับฉัน</a></li>
+            <li><a href="#projects">ผลงาน</a></li>
+            <li><a href="#contact">ติดต่อ</a></li>
+            <li><button class="theme-btn" id="themeToggle">🌙 โหมดมืด</button></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 class="hero-title">สวัสดีครับ ผมชื่อ [ชื่อของคุณ]</h1>
+        <p class="hero-subtitle">กำลังมุ่งสู่สาขา [ชื่อคณะ/สาขาที่ต้องการเข้า]</p>
+        <a href="#projects" class="btn-cta">ดูผลงานของผม</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">เกี่ยวกับฉัน</h2>
+        <div class="about-content">
+            <div>
+                <p><strong>ประวัติส่วนตัว:</strong> ใส่คำแนะนำตัวเองสั้นๆ ที่แสดงถึงความหลงใหลในด้านเทคโนโลยีหรือเหตุผลที่อยากเข้าเรียนต่อที่นี่</p>
+                <br>
+                <p><strong>การศึกษา:</strong> โรงเรียน [ชื่อโรงเรียนเดิม] (สายการเรียน [เช่น วิทย์-คณิต])</p>
+                <p><strong>GPAX:</strong> [เกรดเฉลี่ยสะสม เช่น 3.80]</p>
+            </div>
+            <div>
+                <h3>ทักษะความสามารถ (Skills)</h3>
+                <div class="skills-grid">
+                    <div class="skill-tag">HTML5 / CSS3</div>
+                    <div class="skill-tag">JavaScript (ES6)</div>
+                    <div class="skill-tag">Python (Basic)</div>
+                    <div class="skill-tag">Git / GitHub</div>
+                    <div class="skill-tag">Figma Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">ผลงานที่ภาคภูมิใจ</h2>
+        <div class="projects-grid" id="projectContainer"></div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">ช่องทางการติดต่อ</h2>
+        <p>หากต้องการพูดคุยเพิ่มเติมหรือดูโค้ดของผลงานต่างๆ สามารถติดต่อได้ที่</p>
+        <div class="contact-links">
+            <a href="mailto:your.email@gmail.com">📧 Email</a>
+            <a href="https://github.com/yourusername" target="_blank">🐙 GitHub</a>
+            <a href="tel:08XXXXXXX">📞 เบอร์โทรศัพท์</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Crafted with ❤️ using JavaScript by [ชื่อของคุณ]</p>
+    </footer>
+
+    <script>
+        // 1. ระบบจัดการสลับโหมด Dark / Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                htmlElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerText = '☀️ โหมดสว่าง';
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                themeToggle.innerText = '🌙 โหมดมืด';
+            }
+        });
+
+        // 2. ระบบ Dynamic Project Rendering (เก็บข้อมูลผลงานใน Array เพื่อใช้ JS แสดงผล)
+        // คุณสามารถเพิ่ม/ลดผลงานตรงนี้ได้เลย โค้ดจะอัปเดตบนหน้าเว็บให้เอง
+        const myProjects = [
+            {
+                title: "โครงงานระบบเว็บแจ้งเตือนภัย",
+                desc: "เป็นระบบที่พัฒนาขึ้นมาเพื่อแก้ไขปัญหาชุมชน โดยใช้ JavaScript ในการดึงข้อมูล API และแจ้งเตือนผ่าน LINE Notify",
+                tags: ["JavaScript", "API", "HTML/CSS"]
+            },
+            {
+                title: "แอปพลิเคชันคำนวณเกรดเฉลี่ย (GPA)",
+                desc: "มินิโปรเจกต์เว็บแอปพลิเคชันที่เขียนด้วย Vanilla JavaScript เพื่อช่วยเพื่อนๆ ในห้องคำนวณเกรดล่วงหน้า",
+                tags: ["JavaScript", "DOM Manipulation", "UI Design"]
+            },
+            {
+                title: "เว็บไซต์สรุปบทเรียนวิชาฟิสิกส์",
+                desc: "สร้างเว็บรวบรวมเนื้อหาและสูตรฟิสิกส์ ม.ปลาย เพื่อเป็นคลังความรู้ให้รุ่นน้อง มีระบบค้นหาบทเรียนด้วย JS",
+                tags: ["HTML", "CSS", "Vanilla JS"]
+            }
+        ];
+
+        // ฟังก์ชันในการดึงข้อมูลจาก Array ไปสร้าง HTML Elements
+        const projectContainer = document.getElementById('projectContainer');
+
+        function displayProjects() {
+            myProjects.forEach(project => {
+                // สร้างกล่อง Card ผลงาน
+                const card = document.createElement('div');
+                card.classList.add('project-card');
+
+                // สร้างแท็กข้อความด้านใน
+                const tagsHTML = project.tags.map(tag => `<span>${tag}</span>`).join('');
+
+                card.innerHTML = `
+                    <div>
+                        <h3>${project.title}</h3>
+                        <p>${project.desc}</p>
+                    </div>
+                    <div class="project-tags">
+                        ${tagsHTML}
+                    </div>
+                `;
+
+                // เอา Card ไปยัดใส่ในกล่องหลักบนหน้าเว็บ
+                projectContainer.appendChild(card);
+            });
+        }
+
+        // เรียกใช้งานฟังก์ชันเมื่อหน้าเว็บโหลดเสร็จ
+        window.onload = displayProjects;
+    </script>
+</body>
+</html>
