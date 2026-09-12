@@ -1,2 +1,2 @@
 # Mytestport By Nitipoom M6_6
-[ปก](หน้าปก.mb)
+[หน้าปก](หน้าปก.mb)
